@@ -4,6 +4,7 @@
 		, 0, 0, NULL, 0, 0, 0}
 
 #include <stdio.h>
+extern char **environ;
 
 /**
  * struct list_s - Defines a singly linked list
@@ -60,5 +61,6 @@ typedef struct shell_info
 	int readfd;
 	int histcount;
 } info_t;
+int populate_env_list(info_t *info);
 
 #endif /** SHELL_HEADER */
