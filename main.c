@@ -8,6 +8,8 @@
  */
 int main(int ac, char *argv[])
 {
-	/* Main body statement */
+	if (ac == 2)
+		execve(argv[1], argv, NULL);
+	display_prompt(argv);
 	return (0);
 }
