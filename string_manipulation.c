@@ -21,14 +21,14 @@ int len(char *str)
  */
 int _puts(char *str)
 {
-	int written_byte = 0;
+	int len = 0;
 
-	while (str && *str++)
+	while (str[len])
 	{
-		_putchar(*str);
-		written_byte++;
+		_putchar(str[len]);
+		len++;
 	}
-	return (written_byte);
+	return (len);
 }
 /**
  * _putchar - Fill in buffer with character from string and print it to stdout

@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-extern **environ;
+extern char **environ;
 
 /**
  * typedef struct list_s - A singly linked list structure
@@ -52,7 +52,7 @@ typedef struct list_s
 typedef struct shell_info
 {
 	char *arg;
-	char *argv[];
+	char **argv;
 	char *path;
 	int argc;
 	unsigned int line_count;
@@ -72,9 +72,14 @@ typedef struct shell_info
 } info_t;
 
 /**.......Display the never ending next command prompt of simple shell........*/
-int display_prompt(char *argv[]);
+int display_prompt(info_t *, char **);
 /**.......For string manipulation we use below functions......................*/
 int len(char *);
 int _puts(char *);
 void _putchar(char );
+/**...............Read and format input from command line.....................*/
+ssize_t get_cmd(info_t *, char **, size_t *);
+ssize_t read_cmd(info_t *info);
+void execute_command(info_t *, char **);
+void fork_cmd(info_t *, char **);
 #endif /* SHELL_H */
