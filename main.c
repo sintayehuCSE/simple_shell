@@ -8,8 +8,10 @@
  */
 int main(int ac, char *argv[])
 {
+	info_t info[] = { INIT_SHELL };
+
 	if (ac == 2)
-		execve(argv[1], argv, NULL);
-	display_prompt(argv);
+		execve(argv[1], argv, environ);
+	display_prompt(info, argv);
 	return (0);
 }
