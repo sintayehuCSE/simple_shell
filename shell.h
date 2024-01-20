@@ -78,7 +78,7 @@ int len(char *);
 int _puts(char *);
 void _putchar(char );
 /**...............Read and format input from command line.....................*/
-ssize_t get_cmd(info_t *, char **, size_t *);
+ssize_t get_cmd(info_t *, char *, size_t *);
 ssize_t read_cmd(info_t *info);
 void execute_command(info_t *, char **);
 void fork_cmd(info_t *, char **);
