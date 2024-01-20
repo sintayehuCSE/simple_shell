@@ -16,8 +16,8 @@
 extern char **environ;
 
 /**
- * typedef struct list_s - A singly linked list structure
- * @n: Index of the node
+ * struct list_s - A singly linked list structure
+ * @num: Index of the node
  * @str: A string value of the node
  * @next: Pointer to the next node in the list
  */
@@ -28,7 +28,7 @@ typedef struct list_s
 	struct list_s *next;
 } list_t;
 /**
- * typedef struct shell_info - Information about the shell commands
+ * struct shell_info - Information about the shell commands
  * @arg: String of command and its arguments
  * @argv: An array pointer of arg strings
  * @path: A string path for the current command
@@ -47,7 +47,7 @@ typedef struct list_s
  * @cmd_buf_type: The type of cmd, chained or not
  * @readfd: The file descriptor of open file to provide command of execution
  * @histcount: Count the number of line in the history linked list to modify
-	history file
+ * history file
  */
 
 typedef struct shell_info
