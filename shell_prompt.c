@@ -17,7 +17,12 @@ int display_prompt(info_t *info, char *argv[])
 		read_stat = read_cmd(info);
 		if (read_stat != -1)
 		{
+			set_info(info, argv);
 			execute_command(info, argv);
+		}
+		else
+		{
+			write(1, "\n", 1);
 		}
 	}
 	return (0);
@@ -42,16 +47,20 @@ void execute_command(info_t *info, char **argv)
 */
 void fork_cmd(info_t *info, char **argv)
 {
-	pid_t pid;
+	pid_t child_pid;
 	int status;
 
-	pid = fork();
-	if (pid == -1)
+	child_pid = fork();
+	if (child_pid == -1)
 		perror("Error: ");
-	if (pid == 0)
+	if (child_pid == 0)
 	{
 		if (execve(info->arg, argv, environ) == -1)
-			perror("Error");
+			{
+				if (errno == EACCES)
+					exit(126);
+				exit(1);
+			}
 	}
 	else
 	{

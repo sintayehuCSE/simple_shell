@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <errno.h>
 extern char **environ;
 
 /**
@@ -46,7 +47,7 @@ typedef struct list_s
  * @cmd_buf_type: The type of cmd, chained or not
  * @readfd: The file descriptor of open file to provide command of execution
  * @histcount: Count the number of line in the history linked list to modify
-               history file
+	history file
  */
 
 typedef struct shell_info
@@ -71,15 +72,17 @@ typedef struct shell_info
 	int histcount;
 } info_t;
 
-/**.......Display the never ending next command prompt of simple shell........*/
+/**.......Display the never ending next command prompt of \simple shell......*/
 int display_prompt(info_t *, char **);
-/**.......For string manipulation we use below functions......................*/
+/**.......For string manipulation we use below functions\....................*/
 int len(char *);
 int _puts(char *);
-void _putchar(char );
-/**...............Read and format input from command line.....................*/
+void _putchar(char);
+/**...............Read and format input from command line\...................*/
 ssize_t get_cmd(info_t *, char *, size_t *);
 ssize_t read_cmd(info_t *info);
 void execute_command(info_t *, char **);
 void fork_cmd(info_t *, char **);
+/**.............Function used for manipulating information...................*/
+void set_info(info_t *, char **);
 #endif /* SHELL_H */
